@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+}
+span { 
+  align-self: center;
+  flex-grow: 1;
+  margin: 0 8px 0 0;
+  text-align: center;
+}

@@ -1,0 +1,49 @@
+:host, .loaded-display, .preloading-display {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.loaded-display {
+  padding: 14px 12px;
+}
+
+.paginator-container, .table-container {
+  padding: 0;
+  position: relative;
+}
+
+.table-container {
+  flex-grow: 1;
+  margin: 0 0 15px 0;
+  .overflow-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    border-radius: 4px;
+    table {
+      width: 100%;
+    }
+  }
+}
+
+.mat-row {
+  cursor: pointer;
+  transition: background-color 0.1s ease-in-out;
+}
+.mat-row:hover {
+  background-color: #ddd;
+}
+
+// custom chip to fix mat chip issue when inside table
+.custom-chip {
+  border-radius: 16px;
+  padding: 7px 12px;
+  margin: 4px;
+  border-radius: 16px;
+  min-height: 32px;
+  height: 1px;
+}

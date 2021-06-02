@@ -1,0 +1,36 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button 
+        mat-icon-button 
+        aria-label="Toggle navigation menu"
+        (click)="sidenavOpen = !sidenavOpen">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <a [routerLink]="['/']" class="branding-title">NG-Pokemon</a>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  
+  <mat-sidenav mode="side" [(opened)]="sidenavOpen">
+    
+    <app-loading-overlay *ngIf="!generationsLoaded"></app-loading-overlay>
+    <ng-container *ngIf="generationsLoaded">
+      <a 
+        *ngFor="let generation of generations; index as i"
+        [routerLink]="['/generation/'+(i+1)]"
+        [routerLinkActive]="['active']">
+        {{generation.name}}
+      </a>
+    </ng-container>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    
+    <div class="outlet-container" *ngIf="generationsLoaded">
+      <router-outlet></router-outlet>
+    </div>
+    
+  </mat-sidenav-content>
+</mat-sidenav-container>

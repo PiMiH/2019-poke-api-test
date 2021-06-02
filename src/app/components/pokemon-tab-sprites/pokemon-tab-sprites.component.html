@@ -1,0 +1,10 @@
+<ng-container *ngFor="let spriteObj of spriteObjArr">
+  <ng-container *ngIf="spriteObj.url">
+    <div class="sprite-container">
+      <div>
+        <img [src]="spriteObj.url">
+        <p>{{spriteObj.name}}</p>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>

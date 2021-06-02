@@ -1,0 +1,75 @@
+<div class="preloading-display" *ngIf="!pokemonLoaded">
+  <app-loading-overlay></app-loading-overlay>
+</div>
+
+<div class="loaded-display" *ngIf="pokemonObj" [class.hidden]="!pokemonLoaded">
+
+  <div class="main-content-container">
+    <mat-card>
+      <mat-tab-group>
+
+        <mat-tab label="Stats">
+          <div class="tab-body stats-container">
+
+            <div *ngFor="let stat of pokemonObj.stats" class="stat-item">
+              <div class="stat-item-inner">
+                <div class="stat-name">{{stat.stat.name}}</div>
+                <div class="stat-value">{{stat.base_stat}}</div>
+              </div>
+            </div>
+
+          </div>
+        </mat-tab>
+
+        <!-- <mat-tab label="Moves">
+          <div class="tab-body">
+            <app-pokemon-tab-moves [movesObj]="pokemonObj.moves"></app-pokemon-tab-items>
+          </div>
+        </mat-tab> -->
+
+        <mat-tab label="Items">
+          <div class="tab-body">
+            <app-pokemon-tab-items [itemsObj]="pokemonObj.held_items"></app-pokemon-tab-items>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Sprites">
+          <app-pokemon-tab-sprites [spritesObj]="pokemonObj.sprites"></app-pokemon-tab-sprites>
+        </mat-tab>
+
+      </mat-tab-group>
+    </mat-card>
+  </div>
+
+  <div class="summary-container">
+    <mat-card>
+      <h2>{{pokemonObj.name}}</h2>
+
+      <div class="sprite-display" *ngIf="pokemonObj.sprites.front_default">
+        <img [src]="pokemonObj.sprites.front_default">
+      </div>
+
+      <hr>
+      <div class="left-col">Base XP</div><div class="right-col">{{pokemonObj.height}}</div>
+      <hr>
+      <div class="left-col">Height</div><div class="right-col">{{pokemonObj.height}}</div>
+      <hr>
+      <div class="left-col">Weight</div><div class="right-col">{{pokemonObj.weight}}</div>
+      <hr>
+      <div class="left-col">Forms</div>
+      <div class="right-col">
+        <mat-chip-list aria-label="Fish selection">
+            <mat-chip *ngFor="let form of pokemonObj.forms">{{form.name}}</mat-chip>
+        </mat-chip-list>
+      </div>
+      <hr>
+      <div class="left-col">Types</div>
+      <div class="right-col">
+        <mat-chip-list>
+          <mat-chip *ngFor="let type of pokemonObj.types" [class]="'mat-chip mat-primary mat-standard-chip ng-star-inserted '+type.type.name+'-chip'" >{{type.type.name}}</mat-chip>
+        </mat-chip-list>
+      </div>
+    </mat-card>
+  </div>
+
+</div>

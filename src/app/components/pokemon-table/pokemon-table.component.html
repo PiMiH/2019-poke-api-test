@@ -1,0 +1,76 @@
+<div class="preloading-display" *ngIf="!tableDataLoaded">
+  <app-loading-overlay></app-loading-overlay>
+</div>
+
+<div class="loaded-display" [class.hidden]="!tableDataLoaded">
+  <app-filter *ngIf="tableDataLoaded" [speciesArr]="speciesArr" (filterUpdate)="onFilterUpdate($event)"></app-filter>
+
+  <div class="table-container">
+    <div class="overflow-container">
+      <table mat-table [dataSource]="dataSource" matSort>
+      
+        <ng-container matColumnDef="name" sticky>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="weight">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Weight </th>
+          <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="height">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Height </th>
+          <td mat-cell *matCellDef="let element"> {{element.height}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="speed">
+            <th mat-header-cell *matHeaderCellDef> Speed </th>
+            <td mat-cell *matCellDef="let element"> {{element.stats[0].base_stat}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="spDefense">
+            <th mat-header-cell *matHeaderCellDef> SpDefense </th>
+            <td mat-cell *matCellDef="let element"> {{element.stats[1].base_stat}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="spAttack">
+            <th mat-header-cell *matHeaderCellDef> SpAttack </th>
+            <td mat-cell *matCellDef="let element"> {{element.stats[2].base_stat}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="defense">
+            <th mat-header-cell *matHeaderCellDef> Defense </th>
+            <td mat-cell *matCellDef="let element"> {{element.stats[3].base_stat}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="hp">
+            <th mat-header-cell *matHeaderCellDef> HP </th>
+            <td mat-cell *matCellDef="let element"> {{element.stats[4].base_stat}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="attack">
+            <th mat-header-cell *matHeaderCellDef> Attack </th>
+            <td mat-cell *matCellDef="let element"> {{element.stats[5].base_stat}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef> Type </th>
+            <td mat-cell *matCellDef="let element">
+              <mat-chip-list>
+                <mat-chip *ngFor="let type of element.types" [class]="type.type.name+'-chip mat-chip mat-primary mat-standard-chip ng-star-inserted'">{{type.type.name}}</mat-chip>
+              </mat-chip-list>
+            </td>
+          </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/pokemon/'+row.id]"></tr>
+      </table>
+    </div>
+
+  </div>
+
+  <mat-card class="paginator-container">
+    <mat-paginator [pageSizeOptions]="[12, 24, 48]" showFirstLastButtons></mat-paginator>
+  </mat-card>
+</div>

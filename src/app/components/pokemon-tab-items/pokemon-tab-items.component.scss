@@ -1,0 +1,33 @@
+:host {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.item-container {
+  padding: 10px;
+  flex-direction: column;
+  display: flex;
+  img {
+    align-self: center;
+    justify-self: center;
+  }
+  div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  hr {
+    flex-basis: 100%;
+  }
+  .left-col  {
+    color: #888;
+    flex-basis: 30%;
+    text-align: left;
+  }
+  .right-col  {
+    flex-basis: 70%;
+    display: flex;
+    justify-content: flex-end
+  }
+}

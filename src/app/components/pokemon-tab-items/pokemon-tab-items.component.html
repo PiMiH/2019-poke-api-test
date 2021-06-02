@@ -1,0 +1,14 @@
+<ng-container *ngFor="let item of itemObjArr">
+  <div class="item-container">
+    <img [src]="item.sprites.default" alt="">
+    <div>
+      <div class="left-col">Name</div><div class="right-col">{{item.name}}</div>
+      <hr>
+      <div class="left-col">Id</div><div class="right-col">{{item.id}}</div>
+      <hr>
+      <div class="left-col">Cost</div><div class="right-col">{{item.cost}}</div>
+    </div>
+  </div>
+  
+</ng-container >
+<p *ngIf="itemObjArr && itemObjArr.length == 0">No items held</p>

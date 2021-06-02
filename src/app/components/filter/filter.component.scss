@@ -1,0 +1,44 @@
+mat-expansion-panel {
+  margin: 0 0 14px 0;
+}
+
+form {
+  width: 100%;
+  flex-flow: row;
+  display: flex;
+  flex-wrap: wrap;
+  div {
+    flex-basis: 50%;
+    width: 50%;
+  }
+}
+
+mat-form-field, label {
+  margin: 0 15px;
+  width: 70%;
+}
+
+nouislider{
+  margin: 15px 20px !important;
+}
+
+.slider-container {
+  margin: 0 0 20px 0;
+}
+
+.button-container {
+  flex-grow: 1;
+  display: flex;
+  button {
+    margin-left: auto;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  form {
+    div {
+      flex-basis: 100%;
+      width: 100%;
+    }
+  }
+}
